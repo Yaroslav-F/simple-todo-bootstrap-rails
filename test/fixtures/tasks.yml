@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  deadline: 2014-02-27 18:12:04
+  done: false
+  project_id: 
+
+two:
+  name: MyString
+  deadline: 2014-02-27 18:12:04
+  done: false
+  project_id: 
