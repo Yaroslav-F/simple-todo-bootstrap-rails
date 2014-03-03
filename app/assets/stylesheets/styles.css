@@ -10,7 +10,137 @@ body{
 	text-align: center;
 	font-family:'Voces',cursive;
 	color: #ffffff;
+	margin:76px;
 }
 .headers p{
 	font-size: 15px;
+}
+.new-proj{
+	margin: 0 auto;
+	position: relative;
+	width: 54px;
+	display: block;
+}
+.navbar-default{
+	background-image: -webkit-linear-gradient(top, #4a7cc0 0%, #3b5e9b 100%);
+	border-color: #315589;
+	border-radius: 0;
+}
+.navbar-brand{
+	color:#ffffff !important;
+}
+.navbar-header{
+	position: relative;
+	z-index: 15;
+}
+.navbar-collapse{
+	position: relative;
+	z-index: 10;
+}
+.panel-default{
+	border-radius: 0;
+	background-image: -webkit-linear-gradient(top, #ffffff 0%, #cccccc 65%);
+	border-color: #aaaaaa;
+}
+.panel-body img{
+	width:25px;
+	float: left;
+	margin-right: 16px;
+}
+.navbar-brand{
+	background:url(/assets/deadline.png) no-repeat 3px 3px; 
+	padding-left:58px;
+}
+.input-group .form-control{
+	width:93%;
+	height:30px;
+}
+.input-group-btn button{
+	background-image: -webkit-linear-gradient(top, #94cbae 0%, #508767 100%);
+	border-color: #447557;
+	color:#ffffff;
+}
+.panel{
+	margin-bottom: 0;
+}
+.table{
+	background-color: #ffffff;
+	border-radius:0 0 6px 6px;
+	margin-bottom: 90px
+}
+.table tr:hover{
+	background-color: #fff3a0;
+}
+.new-proj{
+	width:123px;
+	margin:60px auto;
+}
+.btn-default:hover, .btn-default:focus{
+	background-position: 0 0;
+	color:#ffffff;
+}
+.edit-btn{
+	background: url(/assets/edit.png) no-repeat 11px 9px;
+	background-size: 27px;
+	width:50px;
+	height:50px;
+}
+.btn-delete{
+	background: url(/assets/trash.png) no-repeat 11px 9px;
+	background-size: 27px;
+	width:50px;
+	height:50px;	
+}
+footer{
+	position: relative;
+	width:95px;
+	margin:0 auto;
+	color:#ffffff;
+}
+.arrows{
+	height:20px;
+	width: 20px;
+	border-right: 1px solid lightgray;
+	float: left;
+}
+.priority-arrows{
+	height:11px;
+	display: block;
+	position: relative;
+	background: url(../assets/priority.png) no-repeat;
+	background-size: 22px;
+	width:11px;
+	top:-2px;
+}
+.priority-arrows[name='upper']{
+	top:-6px;
+	background-position: 0 0;
+	border-bottom:1px solid gray;
+	height: 14px;
+}
+.priority-arrows[name='lower']{
+	background-position: 0px -13px;
+}
+.priority-arrows:hover{
+	background-position-x: -11px;
+}
+.task-edit{
+	background: url(/assets/edit.png) no-repeat 10px 0;
+	background-size: 19px;
+	display: block;
+	height: 20px;
+	width: 36px;
+	float: left;
+	border-right: 1px solid lightgray;
+}
+.task-delete{
+	background: url(/assets/trash.png) no-repeat 10px 0;
+	background-size: 19px;
+	display: block;
+	height: 20px;
+	width: 36px;
+	float: left;
+}
+.task-btns{
+	visibility: hidden;
 }

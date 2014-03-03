@@ -1,33 +1,68 @@
 <%- model_class = Project -%>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
     <% @projects.each do |project| %>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".<%= project.id %>").click(function(){
+    alert('Last time project was updated at:\n <%= project.created_at %>');
+  });
+})
+  $(".table tr").hover(
+      function() {  $(".task-btns").css('visibility','visible');   },
+      function() {  $(".task-btns").css('visibility','hidden');   }
+    );
+</script>
+  <nav class="navbar navbar-default <%= project.id %>" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><%= project.name %></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to '', edit_project_path(project), :class => 'edit-btn' %></li>
+          <li><%= link_to '',
+                        project_path(project),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn-delete' %></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="input-group">
+      <img src="/assets/green-plus.png">
+      <input type="text" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Add Task</button>
+      </span>
+    </div><!-- /input-group -->
+  </div>
+</div>
+<table class="table table-bordered table-hover">
+    <% Task.where(project_id: project.id).each do |task| %>
       <tr>
-        <td><%= link_to project.id, project_path(project) %></td>
-        <td><%= project.name %></td>
-        <td><%=l project.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_project_path(project), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      project_path(project),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+        <td width="20"><%= check_box("task", "checked") %></td>
+        <td><%= task.name %></td>
+        <td width="110">
+          <div class="task-btns">
+            <div class="arrows">
+              <a href="#" name="upper" class="priority-arrows"></a>
+              <a href="#" name="lower" class="priority-arrows"></a>
+            </div>
+            <a class="task-edit" href="#"></a>
+            <a class="task-delete" href="#"></a>
+          </div>
         </td>
       </tr>
     <% end %>
-  </tbody>
 </table>
+<% end %>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to 'Add TODO List',
             new_project_path,
-            :class => 'btn btn-primary' %>
+            :class => 'btn btn-primary new-proj' %>
+            <footer><p>©Ruby Garage</p></footer>
