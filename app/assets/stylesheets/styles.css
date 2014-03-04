@@ -12,6 +12,10 @@ body{
 	color: #ffffff;
 	margin:76px;
 }
+.headers a{
+	text-decoration: none;
+	color: #ffffff;
+}
 .headers p{
 	font-size: 15px;
 }
@@ -144,3 +148,26 @@ footer{
 .task-btns{
 	visibility: hidden;
 }
+.page-header{
+	color: #ffffff;
+}
+.form-horizontal{
+	color: #ffffff;
+}
+.form-actions{
+	background-color: transparent;
+	border:none;
+}
+.new-task-btn{
+	margin-left: 180px !important;
+}
+.new-task-btn:hover{
+	color: #000000 !important;
+}
+.dl-horizontal{
+	color: #ffffff;
+}
+.form-horizontal .controls{
+	width: 700px;
+}
+

@@ -1,7 +1,9 @@
 <%= simple_form_for @project, :html => { :class => 'form-horizontal' } do |f| %>
 
   <%= f.input :name %>
-  <%= f.association :tasks, as: :check_boxes %>
+  <%= f.association :tasks, collection: Task.all.where(project_id: @project.id) %>
+  <%= link_to 'Add new task', new_task_path,:class => 'btn btn-default  new-task-btn' %>
+  <%= link_to 'Delete task', tasks_path,:class => 'btn btn-default  new-task-btn' %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

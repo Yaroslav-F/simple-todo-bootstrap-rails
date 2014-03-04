@@ -10,6 +10,11 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    tasks=Task.all.where(project_id: @project.id)
+    @names=""
+    tasks.each do |task|
+      @names+=task.name+"; "
+    end
   end
 
   # GET /projects/new
