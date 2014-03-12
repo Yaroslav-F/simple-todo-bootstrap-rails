@@ -8,6 +8,7 @@ $(document).ready(function(){
   $('#addTask<%= project.id %>').click(function(){
     $(this).attr('href', $(this).attr('href') + $('.form-control<%= project.id %>').val());
   });
+  console.log("<%= @priority %>")
 })
 </script>
 <nav class="navbar navbar-default" role="navigation">
@@ -53,16 +54,23 @@ $(document).ready(function(){
     });
     </script>
       <tr class="<%= task.id %>">
-        <td width="20"><%= check_box_tag "done", task.done, task.done %></td>
+        
+        <!-- <td width="20"><%= check_box_tag "done", task.done, task.done %></td> -->
+        <td width="20"><%= best_in_place task, :done, type: :checkbox,  collection: [raw("<i class='icon-check-empty'></i>"), raw("<i class='icon-check'></i>")] %></td>
+        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+
         <td><%= task.name %></td>
         <td width="110">
           <div class="task-btns task-btns<%= task.id %>">
             <div class="arrows">
-              <a href="#" name="upper" class="priority-arrows"></a>
-              <a href="#" name="lower" class="priority-arrows"></a>
+              <%= link_to "", projects_path(priority: task.priority), :class => 'priority-arrows', name: "upper" %>
+              <%= link_to "", edit_task_path(task), :class => 'priority-arrows', name: "lower" %>
             </div>
-            <a class="task-edit" href="#"></a>
-            <a class="task-delete" href="#"></a>
+            <%= link_to "", edit_task_path(task), :class => 'task-edit' %>
+            <%= link_to "", task_path(task),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'task-delete' %>
           </div>
         </td>
       </tr>

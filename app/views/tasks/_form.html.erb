@@ -2,12 +2,13 @@
 
   <%= f.input :name, input_html: { value: params[:taskName] } %>
   <%= f.input :deadline %>
+  <%= f.input :priority, collection: ["1 - ASAP", "2 - Very high", "3 - High", "4 - Medium", "5 - Low"], as: :select %>
   <%= f.input :done %>
   <%= f.association :project, selected: params[:projectId] %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                tasks_path, :class => 'btn' %>
+                projects_path, :class => 'btn' %>
   </div>
 <% end %>

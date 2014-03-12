@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-
+  # skip_before_action :verify_authenticity_token
+  # respond_to :html, :json
   # GET /tasks
   # GET /tasks.json
   def index
@@ -40,6 +41,9 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+    # @task = Task.find(params[:id])
+    # @task.update_attributes(params[:done])
+    # respond_with @task
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
@@ -56,7 +60,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url }
+      format.html { redirect_to projects_url }
       format.json { head :no_content }
     end
   end
@@ -69,6 +73,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :deadline, :done, :project_id)
+      params.require(:task).permit(:name, :deadline, :done, :project_id, :priority)
     end
 end
