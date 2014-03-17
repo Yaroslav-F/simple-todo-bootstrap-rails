@@ -1,5 +1,5 @@
-<%- model_class = Project -%>
-    <% @projects.each do |project| %>
+<%- model_class = Project -%>  
+<% @projects.each do |project| %>
 <script type="text/javascript">
 $(document).ready(function(){
   $(".navbar-header<%= project.id %>").click(function(){
@@ -8,7 +8,7 @@ $(document).ready(function(){
   $('#addTask<%= project.id %>').click(function(){
     $(this).attr('href', $(this).attr('href') + $('.form-control<%= project.id %>').val());
   });
-  console.log("<%= @priority %>")
+  // console.log("<%= @priority %>,<%= @effect %>")
 })
 </script>
 <nav class="navbar navbar-default" role="navigation">
@@ -44,7 +44,7 @@ $(document).ready(function(){
   </div>
 </div>
 <table class="table table<%= project.id %> table-bordered table-hover">
-    <% Task.where(project_id: project.id).each do |task| %>
+    <% Task.where(project_id: project.id).order(:done).order(:priority).each do |task| %>
     <script type="text/javascript">
     $(document).ready(function(){
       $(".<%= task.id %>").hover(
@@ -56,15 +56,15 @@ $(document).ready(function(){
       <tr class="<%= task.id %>">
         
         <!-- <td width="20"><%= check_box_tag "done", task.done, task.done %></td> -->
-        <td width="20"><%= best_in_place task, :done, type: :checkbox,  collection: [raw("<i class='icon-check-empty'></i>"), raw("<i class='icon-check'></i>")] %></td>
+        <td width="20"><%= best_in_place task, :done, type: :checkbox,  collection: [raw("<i class='icon-check-empty'></i>"), raw("<i class='icon-check'></i>")], remote: true %></td>
         <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
 
         <td><%= task.name %></td>
         <td width="110">
           <div class="task-btns task-btns<%= task.id %>">
             <div class="arrows">
-              <%= link_to "", projects_path(priority: task.priority), :class => 'priority-arrows', name: "upper" %>
-              <%= link_to "", edit_task_path(task), :class => 'priority-arrows', name: "lower" %>
+              <%= link_to "", projects_path(task: task.id, priority: task.priority, effect: 'up'), :class => 'priority-arrows', name: "upper" %>
+              <%= link_to "", projects_path(task: task.id, priority: task.priority, effect: 'down'), :class => 'priority-arrows', name: "lower" %>
             </div>
             <%= link_to "", edit_task_path(task), :class => 'task-edit' %>
             <%= link_to "", task_path(task),

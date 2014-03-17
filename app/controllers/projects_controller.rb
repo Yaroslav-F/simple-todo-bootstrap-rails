@@ -1,11 +1,25 @@
+require 'pry'
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
   # GET /projects.json
   def index
+    prior = {1 => "1 - ASAP", 2 => "2 - Very high", 3 => "3 - High", 4 => "4 - Medium", 5 => "5 - Low" }
     @projects = Project.all
-    @priority = params[:priority]
+    priority, effect, task = params[:priority], params[:effect], params[:task]
+    if priority
+      p = priority[0].to_i
+      return false if p<1 || p>5
+      task = Task.find(task) 
+      if effect == "up"
+        task.priority = prior[p-1]
+      else
+        task.priority = prior[p+1]
+      end
+      task.save
+      redirect_to projects_url
+    end
   end
 
   # GET /projects/1

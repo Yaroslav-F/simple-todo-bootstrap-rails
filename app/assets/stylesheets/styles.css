@@ -170,4 +170,6 @@ footer{
 .form-horizontal .controls{
 	width: 700px;
 }
-
+.best_in_place{
+	cursor: pointer;
+}

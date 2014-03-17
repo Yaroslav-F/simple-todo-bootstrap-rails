@@ -46,6 +46,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
+gem 'pry'
 gem 'simple_form'
 gem 'best_in_place', github: 'bernat/best_in_place'
