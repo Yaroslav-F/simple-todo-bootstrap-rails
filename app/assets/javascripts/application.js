@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.purr
+//= require rainyday.min
 //= require best_in_place
 //= require twitter/bootstrap
+//= require bootstrap
+//= require the_role_editinplace
 //= require turbolinks
 //= require_tree .

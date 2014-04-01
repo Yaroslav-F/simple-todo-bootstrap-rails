@@ -1,6 +1,7 @@
 require 'pry'
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /projects
   # GET /projects.json

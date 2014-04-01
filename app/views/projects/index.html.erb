@@ -53,12 +53,14 @@ $(document).ready(function(){
       );
     });
     </script>
-      <tr class="<%= task.id %>">
-        
-        <!-- <td width="20"><%= check_box_tag "done", task.done, task.done %></td> -->
-        <td width="20"><%= best_in_place task, :done, type: :checkbox,  collection: [raw("<i class='icon-check-empty'></i>"), raw("<i class='icon-check'></i>")], remote: true %></td>
-        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-
+      <% if task.deadline.past? && !task.done %>
+        <tr class="<%= task.id %> red">
+            <td width="20"><i class='icon-exclamation-sign'></i></td>
+      <% else %>
+        <tr class="<%= task.id %>">
+            <td width="20"><%= best_in_place task, :done, type: :checkbox,  collection: [raw("<i class='icon-check-empty'></i>"), raw("<i class='icon-check'></i>")], remote: true %></td>
+            <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+      <% end %>
         <td><%= task.name %></td>
         <td width="110">
           <div class="task-btns task-btns<%= task.id %>">

@@ -18,6 +18,7 @@ gem 'twitter-bootstrap-rails'
 # Less support 
 gem "less-rails"
 
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
@@ -49,3 +50,8 @@ end
 gem 'pry'
 gem 'simple_form'
 gem 'best_in_place', github: 'bernat/best_in_place'
+
+gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
+gem 'the_role', '~> 2.5.2'
+gem 'the_role_bootstrap3_ui'
+gem 'devise'

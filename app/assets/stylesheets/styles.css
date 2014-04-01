@@ -173,3 +173,6 @@ footer{
 .best_in_place{
 	cursor: pointer;
 }
+.red{
+	background-color: #FFA95E;
+}

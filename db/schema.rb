@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140306181809) do
+ActiveRecord::Schema.define(version: 20140401122622) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", force: true do |t|
+    t.string   "name",        null: false
+    t.string   "title",       null: false
+    t.text     "description", null: false
+    t.text     "the_role",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,5 +39,15 @@ ActiveRecord::Schema.define(version: 20140306181809) do
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
+
+  create_table "users", force: true do |t|
+    t.string   "login"
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
